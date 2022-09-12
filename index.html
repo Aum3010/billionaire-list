@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Top 100 Billionaires</title>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-circle-packing.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    <style type="stylesheet" src="style.css"></style>
+  
+
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+
+      anychart.onDocumentReady(function () {
+
+        // load a json data file
+anychart.data.loadJsonFile('https://gist.githubusercontent.com/awanshrestha/ff3ae5c08238b1f4f950f022aaad2f6f/raw/3766915befaeea7a32f3d41fdc2ece110e7543d7/circle-packing-chart.json',
+          function(data) {
+
+            var treeData = anychart.data.tree(data, 'as-table');
+
+            var chart = anychart.circlePacking(treeData);
+
+            chart.title("100 Richest people in the World");
+
+            chart.container('container');
+
+            chart.draw();
+
+          }
+        );
+
+      });
+
+    </script>
+  </body>
+</html>
